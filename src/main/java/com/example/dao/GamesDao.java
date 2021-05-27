@@ -14,7 +14,7 @@ public class GamesDao {
     }
 
 
-    public int[][] field = new int[10][10];
+    public int[][] enemys_playing_field = new int[10][10];
 
 
 
