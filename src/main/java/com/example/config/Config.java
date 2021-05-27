@@ -14,9 +14,9 @@ public class Config {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/SeaBattle");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/seabattle");
         dataSource.setUsername("root");
-        dataSource.setPassword("kali");
+        dataSource.setPassword("fffff55555");
 
         return dataSource;
     }
