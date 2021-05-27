@@ -1,0 +1,18 @@
+.but
+{
+    height:35px;
+    width:35px;
+    background-color: rgb(159, 159, 243);
+    
+}
+
+td {
+    padding: 0px;
+}
+
+table{
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin-left: 700px;
+    margin-top: 150px;
+  }

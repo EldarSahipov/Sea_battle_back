@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/register_now.css">
+</head>
+<body background="a.jpg" >
+<form>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
+        <hr>
+        <label><b>Логин</b></label>
+        <input type="text" placeholder="Введите логин" name="email" required>
+
+        <label><b>Пароль</b></label>
+        <input type="password" placeholder="Введите пароль" name="psw" required>
+
+        <label><b>Повторите пароль</b></label>
+        <input type="password" placeholder="Введите ещё раз пароль" name="psw-repeat" required>
+        <hr>
+        <p>Создавая учетную запись, вы соглашаетесь с нашими <a href="#">Условиями и Политикой конфиденциальности.</a>.</p>
+
+        <button class="registerbtn" onclick="window.location.href='/registration_completed'">Зарегистрироваться</button>
+    </div>
+
+    <div class="container signin">
+        <p>Уже есть аккаунт? <a href="#">Войти</a>.</p>
+    </div>
+</form>
+
+</body>
+<script type="text/javascript" src="js/script.js"></script>
+</html>
