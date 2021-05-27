@@ -20,7 +20,7 @@ public class UserDao {
     }
 
     public void addUser(User user) {
-        jdbcTemplate.update("INSERT INTO users VALUES(default ,?,?,?,?,?,?,?,?)",
+        jdbcTemplate.update("INSERT INTO users VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?)",
                 user.getRole(), user.getLogin(), user.getPassword(),
                 user.getNickname(), user.getRegist_date(), user.getExpire_date(),
                 user.getIs_deleted(), user.getIs_banned());
@@ -32,7 +32,7 @@ public class UserDao {
 
     public User updateUser(User updateUser) {
         jdbcTemplate.update("UPDATE users SET role=?, login=?, password=?," +
-        " nickname=?, regist_date=?, expire_date=? is_deleted=?, is_banned=? WHERE id=?",
+        " nickname=?, regist_date=?, expire_date=?, is_deleted=?, is_banned=? WHERE id=?",
         updateUser.getRole(), updateUser.getLogin(), updateUser.getPassword(),
         updateUser.getNickname(), updateUser.getRegist_date(), updateUser.getExpire_date(),
         updateUser.getIs_deleted(), updateUser.getIs_banned());

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Регистрация</title>
     <link rel="stylesheet" href="css/register_now.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body background="a.jpg" >
 <form>
@@ -12,17 +16,20 @@
         <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
         <hr>
         <label><b>Логин</b></label>
-        <input type="text" placeholder="Введите логин" name="email" required>
+        <input type="text" placeholder="Введите логин" id="login" name="">
+
+        <label><b>Никнейм</b></label>
+        <input type="text" placeholder="Введите новый никнейм" id="nickname" name="">
 
         <label><b>Пароль</b></label>
-        <input type="password" placeholder="Введите пароль" name="psw" required>
+        <input type="password" placeholder="Введите пароль" id="psw">
 
         <label><b>Повторите пароль</b></label>
-        <input type="password" placeholder="Введите ещё раз пароль" name="psw-repeat" required>
-        <hr>
-        <p>Создавая учетную запись, вы соглашаетесь с нашими <a href="#">Условиями и Политикой конфиденциальности.</a>.</p>
+        <input type="password" placeholder="Введите ещё раз пароль" id="psw-repeat">
+<!--        <hr>-->
+<!--        <p>Создавая учетную запись, вы соглашаетесь с нашими <a href="#">Условиями и Политикой конфиденциальности.</a>.</p>-->
 
-        <button class="registerbtn" onclick="window.location.href='/registration_completed'">Зарегистрироваться</button>
+        <button type="button" onclick=addUser()>Зарегистрироваться</button>
     </div>
 
     <div class="container signin">
@@ -31,5 +38,5 @@
 </form>
 
 </body>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/registr.js"></script>
 </html>
