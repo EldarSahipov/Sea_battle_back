@@ -22,7 +22,7 @@ public class UserDao {
     public void addUser(User user) {
         jdbcTemplate.update("INSERT INTO users VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?)",
                 user.getRole(), user.getLogin(), user.getPassword(),
-                user.getNickname(), user.getRegist_date(), user.getExpire_date(),
+                user.getNickname(), user.getRegist_date().toString(), user.getExpire_date(),
                 user.getIs_deleted(), user.getIs_banned());
     }
 

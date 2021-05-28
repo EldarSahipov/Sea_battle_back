@@ -1,5 +1,5 @@
+let date = new Date();
 function addUser() {
-    let date = new Date();
     const dbDate = 'Y-M-D H:m:s'.replace('Y', date.getFullYear()).replace('M', date.getMonth()).replace('D', date.getDay()).replace('H', date.getHours()).replace('m', date.getMinutes()).replace('s', date.getSeconds())
     $.ajax({
         url: '/add_user',
@@ -10,7 +10,7 @@ function addUser() {
             login: document.getElementById('login').value,
             password: document.getElementById('psw').value,
             nickname: document.getElementById('nickname').value,
-            regist_date: date,
+            regist_date: date
         }),
         success: function () {
             alert('Пользователь добавлен')

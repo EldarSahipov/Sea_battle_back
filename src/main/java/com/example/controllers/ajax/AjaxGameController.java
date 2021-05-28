@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AjaxGameController {
 
-
+    @Autowired
     private GamesDao gamesDao;
 
-    @GetMapping("/check_field") {
+    @GetMapping("/check_field")
     public int Check(@RequestBody String str) {
         return gamesDao.Check(str);
-        }
     }
 }
