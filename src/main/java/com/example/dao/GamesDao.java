@@ -13,8 +13,28 @@ public class GamesDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+ public int Check (String str)
+ {
+     int conclusion;
+     int[][] enemys_playing_field = new int[10][10];
+     enemys_playing_field[0][0] = 1;
+     enemys_playing_field[0][1] = 0;
 
-    public int[][] enemys_playing_field = new int[10][10];
+     int i,j;
+     i = Character.getNumericValue(str.charAt(0));
+     j = Character.getNumericValue(str.charAt(2));
+
+     if (enemys_playing_field[i][j] == 1)
+     {
+         conclusion = 1;
+         return conclusion;
+     }
+     else{
+         conclusion = 0;
+         return conclusion;
+     }
+ }
+
 
 
 
