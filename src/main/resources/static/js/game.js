@@ -1,34 +1,132 @@
-let tds = document.querySelectorAll('td');
+
+let id_table_1;
+let id_table_2;
+
+function game_start()
+{
+    $.get('/game_start/' + 1, function (data) {
+        console.log(data)
+        if (data == 1111)
+        {
+
+            this.id_table_1 = 1111;
+            this.id_table_2 = 2222;
+        }
+        else {
+            this.id_table_1 = 2222;
+            this.id_table_2 = 1111;
+        }
+
+    })
+}
+
+game_start();
+
+
+// let tds = document.querySelectorAll('td');
+
+
+function tableCreate_1(u) {
+    tbl = document.createElement('table');
+    tbl.setAttribute("id", id_table_1);
+
+    for (var i = 0; i < u; i++) {
+        var tr = tbl.insertRow();
+
+        for (var j = 0; j < u; j++) {
+
+            var td = tr.insertCell();
+
+
+
+        }
+    }
+    //body.appendChild(tbl);
+    var hereDiv = document.getElementById("left")
+    hereDiv.appendChild(tbl)
+
+    var t = document.getElementById(id_table_1);
+    var trs = t.getElementsByTagName("tr");
+    var tds = null;
+
+    for (var i=0; i<trs.length; i++)
+    {
+        tds = trs[i].getElementsByTagName("td");
+        for (var n=0; n<trs.length;n++)
+        {
+            tds[n].innerHTML = ".";
+        }
+    }
+
+    tbl.classList.add("t");
+}
+
+function tableCreate_2(u) {
+    tbl = document.createElement('table');
+    tbl.setAttribute("id", id_table_2);
+
+    for (var i = 0; i < u; i++) {
+        var tr = tbl.insertRow();
+
+        for (var j = 0; j < u; j++) {
+
+            var td = tr.insertCell();
+
+
+
+        }
+    }
+    //body.appendChild(tbl);
+    var hereDiv = document.getElementById("right")
+    hereDiv.appendChild(tbl)
+
+    var t = document.getElementById(id_table_2);
+    var trs = t.getElementsByTagName("tr");
+    var tds = null;
+
+    for (var i=0; i<trs.length; i++)
+    {
+        tds = trs[i].getElementsByTagName("td");
+        for (var n=0; n<trs.length;n++)
+        {
+            tds[n].innerHTML = ".";
+        }
+    }
+
+    tbl.classList.add("t");
+}
+tableCreate_1(10);
+tableCreate_2(10);
+
 
 function add() {
-                    $.get('/add', function (data) {
-                        console.log(data)
-                        var tds = document.getElementById('table1').getElementsByTagName('td');
-                        var massiv = []
+    variable = document.querySelector(".t").getAttribute("id");
+    console.log(variable)
 
-                        for (var i = 0; i < 10; i++)
-                        {
-                            for ( var j = 0; j < 10; j++) {
-                                massiv.push(data[i][j]);
-                            }
-                        }
-                        for (var i = 0; i < tds.length; i++){
-                            if (massiv[i] == 1)
-                            {
-                                tds[i].className = 'greeny'
-                            }
-                        }
-                    })
+        $.get('/add', function (data) {
+            console.log(data)
+            var tds = document.getElementById(id_table_1).getElementsByTagName('td');
+            var massiv = []
 
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    massiv.push(data[i][j]);
+                }
+            }
+            for (var i = 0; i < tds.length; i++) {
+                if (massiv[i] == 1) {
+                    tds[i].className = 'greeny'
+                }
+            }
+        })
 
+        // document.getElementById("but").style.display = "none"
 
 }
 
+add();
 
-
-
-
-document.querySelector('table').onclick = (event) => {
+document.getElementById(this.id_table_2).onclick = (event) => {
 
 let cell = event.target;
 if (cell.tagName.toLowerCase() != 'td')

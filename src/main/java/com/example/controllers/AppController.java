@@ -21,6 +21,11 @@ public class AppController {
         return "game";
     }
 
+    @GetMapping("/main")
+    public String main() {
+        return "main";
+    }
+
     @GetMapping("/registration_completed")
     public String register_completed() {
         return "registration_completed";

@@ -10,6 +10,8 @@ public class GamesDao {
    public int[][] enemys_playing_field = new int[10][10];
    public int[][] playing_field = new int[10][10];
 
+    public int[] playing_id = new int[2];
+
 
 
     private final JdbcTemplate jdbcTemplate;
@@ -37,6 +39,43 @@ public class GamesDao {
          return conclusion;
      }
  }
+
+    public int[] Id_gamers (int id)
+    {
+        if (id == 1)
+        {
+            if (playing_id[0] == 0)
+            {
+                playing_id[0] = 1;
+            }
+            else if (playing_id[0] == 1)
+            {
+                playing_id[1]=2;
+            }
+        }
+
+
+        return playing_id;
+    }
+
+    public int Game_Start (int id)
+    {
+        int var = 0;
+        if(playing_id[0] == 1)
+        {
+            playing_id[0] = 1111;
+            var = 1111;
+            return var;
+        }
+        else
+        {
+            var = 2222;
+            return var;
+        }
+
+
+    }
+
 
  public int[][] add_ships()
  {

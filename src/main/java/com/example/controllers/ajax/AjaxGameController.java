@@ -20,4 +20,15 @@ public class AjaxGameController {
         return gamesDao.add_ships();
     }
 
+    @GetMapping("/search_game/{id}")
+    public int[] Id_gamers(@PathVariable ("id") int id) {
+        return gamesDao.Id_gamers(id);
+    }
+
+    @GetMapping("/game_start/{id}")
+    public int Game_Start(@PathVariable ("id") int id) {
+        return gamesDao.Game_Start(id);
+    }
+
+
 }
