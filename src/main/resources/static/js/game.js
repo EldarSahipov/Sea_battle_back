@@ -1,188 +1,187 @@
 
 let id_table_1;
-let id_table_2;
-
-function game_start()
-{
+let id_table_2 = "enemys";
+game_start();
+function game_start() {
     $.get('/game_start/' + 1, function (data) {
         console.log(data)
-        if (data == 1111)
-        {
+        if (data == 1) {
 
-            this.id_table_1 = 1111;
-            this.id_table_2 = 2222;
-        }
-        else {
-            this.id_table_1 = 2222;
-            this.id_table_2 = 1111;
+            id_table_1 = 1;
+            start();
+        } else {
+            id_table_1 = 2;
+            start();
+
         }
 
     })
+
 }
 
-game_start();
+
+
+
+
 
 
 // let tds = document.querySelectorAll('td');
 
 
-function tableCreate_1(u) {
-    tbl = document.createElement('table');
-    tbl.setAttribute("id", id_table_1);
+    function tableCreate_1(u) {
+        tbl = document.createElement('table');
+        tbl.setAttribute("id", id_table_1);
 
-    for (var i = 0; i < u; i++) {
-        var tr = tbl.insertRow();
+        for (var i = 0; i < u; i++) {
+            var tr = tbl.insertRow();
 
-        for (var j = 0; j < u; j++) {
+            for (var j = 0; j < u; j++) {
 
-            var td = tr.insertCell();
+                var td = tr.insertCell();
 
 
-
+            }
         }
-    }
-    //body.appendChild(tbl);
-    var hereDiv = document.getElementById("left")
-    hereDiv.appendChild(tbl)
+        //body.appendChild(tbl);
+        var hereDiv = document.getElementById("left")
+        hereDiv.appendChild(tbl)
 
-    var t = document.getElementById(id_table_1);
-    var trs = t.getElementsByTagName("tr");
-    var tds = null;
+        var t = document.getElementById(id_table_1);
+        var trs = t.getElementsByTagName("tr");
+        var tds = null;
 
-    for (var i=0; i<trs.length; i++)
-    {
-        tds = trs[i].getElementsByTagName("td");
-        for (var n=0; n<trs.length;n++)
-        {
-            tds[n].innerHTML = ".";
+        for (var i = 0; i < trs.length; i++) {
+            tds = trs[i].getElementsByTagName("td");
+            for (var n = 0; n < trs.length; n++) {
+                tds[n].innerHTML = ".";
+            }
         }
-    }
 
-    tbl.classList.add("t");
-}
-
-function tableCreate_2(u) {
-    tbl = document.createElement('table');
-    tbl.setAttribute("id", id_table_2);
-
-    for (var i = 0; i < u; i++) {
-        var tr = tbl.insertRow();
-
-        for (var j = 0; j < u; j++) {
-
-            var td = tr.insertCell();
-
-
-
-        }
-    }
-    //body.appendChild(tbl);
-    var hereDiv = document.getElementById("right")
-    hereDiv.appendChild(tbl)
-
-    var t = document.getElementById(id_table_2);
-    var trs = t.getElementsByTagName("tr");
-    var tds = null;
-
-    for (var i=0; i<trs.length; i++)
-    {
-        tds = trs[i].getElementsByTagName("td");
-        for (var n=0; n<trs.length;n++)
-        {
-            tds[n].innerHTML = ".";
-        }
+        tbl.classList.add("t");
     }
 
-    tbl.classList.add("t");
-}
-tableCreate_1(10);
-tableCreate_2(10);
+    function tableCreate_2(u) {
+        tbl = document.createElement('table');
+        tbl.setAttribute("id", id_table_2);
+
+        for (var i = 0; i < u; i++) {
+            var tr = tbl.insertRow();
+
+            for (var j = 0; j < u; j++) {
+
+                var td = tr.insertCell();
 
 
-function add() {
-    variable = document.querySelector(".t").getAttribute("id");
-    console.log(variable)
-
-        $.get('/add', function (data) {
-            console.log(data)
-            var tds = document.getElementById(id_table_1).getElementsByTagName('td');
-            var massiv = []
-
-            for (var i = 0; i < 10; i++) {
-                for (var j = 0; j < 10; j++) {
-                    massiv.push(data[i][j]);
-                }
             }
-            for (var i = 0; i < tds.length; i++) {
-                if (massiv[i] == 1) {
-                    tds[i].className = 'greeny'
-                }
-            }
-        })
-
-        // document.getElementById("but").style.display = "none"
-
-}
-
-add();
-
-document.getElementById(this.id_table_2).onclick = (event) => {
-
-let cell = event.target;
-if (cell.tagName.toLowerCase() != 'td')
-    return;
-let i = cell.parentNode.rowIndex;
-let j = cell.cellIndex;
-console.log(i, j);
-//document.getElementById('d').innerHTML = `${i},${j}`
-
-    var target = event.target;
-    var str = i + "" + j
-    $.get('/check_field/' + str, function (data) {
-        if (target.tagName === 'TD') {
-
-            if (data == 1) {
-                target.classList.toggle('redy');
-            }
-            else {
-                target.classList.toggle('grayy');
-            }
-
         }
-    })
-}
+        //body.appendChild(tbl);
+        var hereDiv = document.getElementById("right")
+        hereDiv.appendChild(tbl)
+
+        var t = document.getElementById(id_table_2);
+        var trs = t.getElementsByTagName("tr");
+        var tds = null;
+
+        for (var i = 0; i < trs.length; i++) {
+            tds = trs[i].getElementsByTagName("td");
+            for (var n = 0; n < trs.length; n++) {
+                tds[n].innerHTML = ".";
+            }
+        }
+
+        tbl.classList.add("t");
+    }
 
 
 
 
+    function add() {
+            variable = document.querySelector(".t").getAttribute("id");
+            console.log(variable)
 
-
-
-
-
-
-
-/*
-
-    tds.forEach((item) => {
-        item.onclick = (e) => {
-            var str = i + "" + j
-            console.log(ij)
-            $.get('/check_field/' + str, function (data) {
+            $.get('/add/' + id_table_1, function (data) {
                 console.log(data)
-                if (data == 1)
-                {
-                    e.target.classList.toggle('redy')
+                var tds = document.getElementById(id_table_1).getElementsByTagName('td');
+                var massiv = []
+
+                for (var i = 0; i < 10; i++) {
+                    for (var j = 0; j < 10; j++) {
+                        massiv.push(data[i][j]);
+                    }
                 }
-                else
-                {
-                    e.target.classList.toggle('grayy')
+                for (var i = 0; i < tds.length; i++) {
+                    if (massiv[i] == 1) {
+                        tds[i].className = 'greeny'
+                    }
                 }
             })
 
+
+
+    }
+
+    function start()
+    {
+        tableCreate_1(10);
+        tableCreate_2(10);
+        add();
+        // document.getElementById("butt").style.display = "none"
+        document.getElementById(id_table_2).onclick = (event) => {
+            let cell = event.target;
+            if (cell.tagName.toLowerCase() != 'td')
+                return;
+            let i = cell.parentNode.rowIndex;
+            let j = cell.cellIndex;
+            console.log(i, j);
+//document.getElementById('d').innerHTML = `${i},${j}`
+
+            var target = event.target;
+            if (target.textContent == ".") {
+                var str = id_table_1 + "" + i + "" + j
+                $.get('/check_field/' + str, function (data) {
+                    if (target.tagName === 'TD') {
+
+                        if (data == 1) {
+                            target.classList.toggle('redy');
+                            target.innerHTML = "х"
+                        } else {
+                            target.classList.toggle('grayy');
+                            target.innerHTML = "х"
+                        }
+
+                    }
+                })
+            }
         }
-    })
- */
+    }
+
+
+
+
+
+
+
+    /*
+
+        tds.forEach((item) => {
+            item.onclick = (e) => {
+                var str = i + "" + j
+                console.log(ij)
+                $.get('/check_field/' + str, function (data) {
+                    console.log(data)
+                    if (data == 1)
+                    {
+                        e.target.classList.toggle('redy')
+                    }
+                    else
+                    {
+                        e.target.classList.toggle('grayy')
+                    }
+                })
+
+            }
+        })
+     */
 
 
 
