@@ -30,5 +30,30 @@ public class AjaxGameController {
         return gamesDao.Game_Start(id);
     }
 
+    @GetMapping("/motion/{motion}")
+    public int Motion(@PathVariable ("motion") int motion) {
+        return gamesDao.Motion(motion);
+    }
+
+    @GetMapping("/motion_update/{motion}")
+    public int Motion_Update(@PathVariable ("motion") int motion) {
+        return gamesDao.Motion_Update(motion);
+    }
+
+    @GetMapping("/winner/{score}")
+    public int Winner(@PathVariable ("score") int score) {
+        return gamesDao.Winner(score);
+    }
+
+    @GetMapping("/chek_id")
+    public int Chek_id() {
+        return gamesDao.Chek_id();
+    }
+
+    @GetMapping("/cheking/{id}")
+    public int[][] Cheking(@PathVariable ("id") int id) {
+        return gamesDao.Cheking(id);
+    }
+
 
 }

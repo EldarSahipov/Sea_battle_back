@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 public class GamesDao {
     public int[][] playing_field_1 = new int[10][10];
     public int[][] playing_field_2 = new int[10][10];
-
-    public int[] playing_id = new int[3];
+    public int motion_check = 0;
+    public int[] playing_id = new int[2];
+    public int score_1 = 0;
+    public int score_2 = 0;
 
 
     private final JdbcTemplate jdbcTemplate;
@@ -19,6 +21,13 @@ public class GamesDao {
     public GamesDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+//    public void Restart()
+//    {
+//        this.playing_id[0] = 0;
+//        this.playing_id[1] = 0;
+//
+//    }
 
     public int Check(String str) {
         if (Character.getNumericValue(str.charAt(0)) == 2)
@@ -31,9 +40,11 @@ public class GamesDao {
 
             if (playing_field_1[i][j] == 1) {
                 conclusion_1 = 1;
+                playing_field_1[i][j] = 11;
                 return conclusion_1;
             } else {
                 conclusion_1 = 0;
+                playing_field_1[i][j] = 10;
                 return conclusion_1;
             }
         }
@@ -47,14 +58,54 @@ public class GamesDao {
 
             if (playing_field_2[i][j] == 1) {
                 conclusion_2 = 1;
+                playing_field_2[i][j] = 11;
                 return conclusion_2;
             } else {
                 conclusion_2 = 0;
+                playing_field_2[i][j] = 10;
                 return conclusion_2;
             }
         }
 
     }
+
+
+    public int[][] Cheking(int id){
+        int mass[][] = new int[10][10];
+        if (id == 1)
+        {
+
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    mass[i][j] = playing_field_1[i][j];
+                }
+            }
+        }
+        else if (id == 2)
+        {
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    mass[i][j] = playing_field_2[i][j];
+                }
+            }
+        }
+        return mass;
+    }
+
+    public int Chek_id()
+    {
+        int i = 0;
+        if (playing_id[1] == 2222) {
+            i = 2;
+        }
+        else if (playing_id[0] == 1111)
+        {
+           i = 1;
+        }
+
+        return i;
+    }
+
 
     public int[] Id_gamers(int id) {
         if (id == 1) {
@@ -82,6 +133,51 @@ public class GamesDao {
 
 
     }
+
+    public int Motion(int motion) {
+
+    if (motion != motion_check)
+    {
+        motion = motion_check;
+    }
+
+    return motion;
+    }
+
+    public int Motion_Update(int motion) {
+
+        motion_check = motion;
+
+
+        return motion_check;
+    }
+
+    public int Winner(int score) {
+
+        int win = 0;
+
+        if (score == 11111111)
+        {
+            score_1++;
+            if (score_1==20)
+            {
+                win = 1;
+            }
+
+        }
+        else if (score == 2222222)
+        {
+            score_2++;
+            if (score_2==20)
+            {
+                win = 2;
+            }
+
+        }
+
+        return win;
+    }
+
 
 
     public int[][] add_ships(int id) {
